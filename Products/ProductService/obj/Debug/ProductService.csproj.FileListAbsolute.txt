@@ -1,0 +1,15 @@
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\ProductService.exe.config
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\ProductService.exe
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\ProductService.pdb
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\obj\Debug\ProductService.csprojResolveAssemblyReference.cache
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\obj\Debug\ProductService.exe
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\obj\Debug\ProductService.pdb
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\EntityFramework.dll
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\ProductInterface.dll
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\ProductInterface.pdb
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\EntityFramework.xml
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mzwakhile\Documents\GitHub\MyTestApps\MyTests\Products\ProductService\bin\Debug\ProductService.exe.config
+C:\Users\Mzwakhile\Documents\GitHub\MyTestApps\MyTests\Products\ProductService\obj\Debug\ProductService.exe
+C:\Users\Mzwakhile\Documents\GitHub\MyTestApps\MyTests\Products\ProductService\obj\Debug\ProductService.pdb

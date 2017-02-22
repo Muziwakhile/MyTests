@@ -1,0 +1,11 @@
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductClient\bin\Debug\ProductClient.exe.config
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductClient\bin\Debug\ProductClient.exe
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductClient\bin\Debug\ProductClient.pdb
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductClient\obj\Debug\ProductClient.csprojResolveAssemblyReference.cache
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductClient\obj\Debug\ProductClient.exe
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductClient\obj\Debug\ProductClient.pdb
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductClient\bin\Debug\ProductInterface.dll
+c:\users\mzwakhile\documents\visual studio 2013\Projects\Products\ProductClient\bin\Debug\ProductInterface.pdb
+C:\Users\Mzwakhile\Documents\GitHub\MyTestApps\MyTests\Products\ProductClient\bin\Debug\ProductClient.exe.config
+C:\Users\Mzwakhile\Documents\GitHub\MyTestApps\MyTests\Products\ProductClient\obj\Debug\ProductClient.exe
+C:\Users\Mzwakhile\Documents\GitHub\MyTestApps\MyTests\Products\ProductClient\obj\Debug\ProductClient.pdb
