@@ -4,9 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1470403990d849c39a249c0ee2614ba9" Name="Diagram1" >
-        <EntityTypeShape EntityType="AccountingSystemModel.InvoiceHeader" Width="1.5" PointX="1.5" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AccountingSystemModel.INvoiceDetail" Width="1.5" PointX="6" PointY="1" />
+      <Diagram DiagramId="f7f06adce4f240f5b9121d05f66cffee" Name="Diagram1" ZoomLevel="97" >
+        <EntityTypeShape EntityType="AccountingSystemModel.InvoiceHeader" Width="1.5" PointX="3.125" PointY="2.5" />
+        <EntityTypeShape EntityType="AccountingSystemModel.InvoiceDetail" Width="1.5" PointX="6.125" PointY="2.625" />
+        <AssociationConnector Association="AccountingSystemModel.InvoiceHeaderInvoiceDetail" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

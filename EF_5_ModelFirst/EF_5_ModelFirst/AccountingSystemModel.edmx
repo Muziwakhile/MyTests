@@ -4,17 +4,55 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="AccountingSystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="AccountingSystemModelTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="AccountingSystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AccountingSystemModelStoreContainer">
+    <EntitySet Name="InvoiceHeaders" EntityType="AccountingSystemModel.Store.InvoiceHeaders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InvoiceDetails" EntityType="AccountingSystemModel.Store.InvoiceDetails" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="InvoiceHeaderInvoiceDetail" Association="AccountingSystemModel.Store.InvoiceHeaderInvoiceDetail">
+      <End Role="InvoiceHeader" EntitySet="InvoiceHeaders" />
+      <End Role="InvoiceDetail" EntitySet="InvoiceDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="InvoiceHeaders">
+    <Key>
+      <PropertyRef Name="InvoiceHeader_Id" />
+    </Key>
+    <Property Name="InvoiceHeader_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Total" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvoiceDetails">
+    <Key>
+      <PropertyRef Name="InvoiceDetail_Id" />
+    </Key>
+    <Property Name="InvoiceDetail_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="InvoiceHeaderInvoiceHeader_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="InvoiceHeaderInvoiceDetail">
+    <End Role="InvoiceHeader" Type="AccountingSystemModel.Store.InvoiceHeaders" Multiplicity="1" />
+    <End Role="InvoiceDetail" Type="AccountingSystemModel.Store.InvoiceDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvoiceHeader">
+        <PropertyRef Name="InvoiceHeader_Id" />
+      </Principal>
+      <Dependent Role="InvoiceDetail">
+        <PropertyRef Name="InvoiceHeaderInvoiceHeader_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AccountingSystemModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="AccountingSystemModelContainer" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AccountingSystemContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="InvoiceHeaders" EntityType="AccountingSystemModel.InvoiceHeader" />
-          <EntitySet Name="INvoiceDetails" EntityType="AccountingSystemModel.INvoiceDetail" />
+          <EntitySet Name="InvoiceDetails" EntityType="AccountingSystemModel.InvoiceDetail" />
+          <AssociationSet Name="InvoiceHeaderInvoiceDetail" Association="AccountingSystemModel.InvoiceHeaderInvoiceDetail">
+            <End Role="InvoiceHeader" EntitySet="InvoiceHeaders" />
+            <End Role="InvoiceDetail" EntitySet="InvoiceDetails" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="InvoiceHeader">
           <Key>
@@ -22,27 +60,58 @@
           </Key>
           <Property Name="InvoiceHeader_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Total" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="InvoiceDetails" Relationship="AccountingSystemModel.InvoiceHeaderInvoiceDetail" FromRole="InvoiceHeader" ToRole="InvoiceDetail" />
         </EntityType>
-        <EntityType Name="INvoiceDetail">
+        <EntityType Name="InvoiceDetail">
           <Key>
-            <PropertyRef Name="INvoiceDetail_Id" />
+            <PropertyRef Name="InvoiceDetail_Id" />
           </Key>
-          <Property Name="INvoiceDetail_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemDescription" Type="String" Nullable="false" />
-          <Property Name="Quantity" Type="String" Nullable="false" />
-          <Property Name="Price" Type="String" Nullable="false" />
+          <Property Name="InvoiceDetail_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="InvoiceHeader" Relationship="AccountingSystemModel.InvoiceHeaderInvoiceDetail" FromRole="InvoiceDetail" ToRole="InvoiceHeader" />
+          <Property Name="InvoiceHeaderInvoiceHeader_Id" Type="Int32" Nullable="false" />
         </EntityType>
+        <Association Name="InvoiceHeaderInvoiceDetail">
+          <End Type="AccountingSystemModel.InvoiceHeader" Role="InvoiceHeader" Multiplicity="1" />
+          <End Type="AccountingSystemModel.InvoiceDetail" Role="InvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceHeader">
+              <PropertyRef Name="InvoiceHeader_Id" />
+            </Principal>
+            <Dependent Role="InvoiceDetail">
+              <PropertyRef Name="InvoiceHeaderInvoiceHeader_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="AccountingSystemModel" />
-        <Alias Key="Target" Value="AccountingSystemModel.Store" />
-        <EntityContainerMapping CdmEntityContainer="AccountingSystemModelContainer" StorageEntityContainer="AccountingSystemModelTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AccountingSystemModelStoreContainer" CdmEntityContainer="AccountingSystemContainer">
+    <EntitySetMapping Name="InvoiceHeaders">
+      <EntityTypeMapping TypeName="IsTypeOf(AccountingSystemModel.InvoiceHeader)">
+        <MappingFragment StoreEntitySet="InvoiceHeaders">
+          <ScalarProperty Name="InvoiceHeader_Id" ColumnName="InvoiceHeader_Id" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(AccountingSystemModel.InvoiceDetail)">
+        <MappingFragment StoreEntitySet="InvoiceDetails">
+          <ScalarProperty Name="InvoiceDetail_Id" ColumnName="InvoiceDetail_Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="InvoiceHeaderInvoiceHeader_Id" ColumnName="InvoiceHeaderInvoiceHeader_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -56,6 +125,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
